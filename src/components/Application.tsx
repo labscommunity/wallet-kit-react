@@ -1,6 +1,6 @@
+import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { DefaultTheme, withTheme } from "../theme";
 import type { MouseEventHandler } from "react";
-import type { Radius } from "./Provider";
 import { Paragraph } from "./Paragraph";
 import { styled } from "@linaria/react";
 import { Button } from "./Button";

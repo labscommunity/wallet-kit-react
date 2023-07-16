@@ -6,6 +6,7 @@ export const defaultState: GlobalState = {
   activeStrategy: false,
   givenPermissions: [],
   config: {
+    strategies: [],
     permissions: []
   }
 };

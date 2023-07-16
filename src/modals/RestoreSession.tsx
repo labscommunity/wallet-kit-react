@@ -1,14 +1,13 @@
-import { STRATEGY_STORE, syncStrategies } from "../strategy";
-import type { Radius } from "../components/Provider";
+import type { Strategy } from "@arweave-wallet-kit/core/strategy";
+import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { DefaultTheme, withTheme } from "../theme";
 import { Modal } from "../components/Modal/Modal";
-import type Strategy from "../strategy/Strategy";
 import type { Variants } from "framer-motion";
 import { Button } from "../components/Button";
 import useGlobalState from "../hooks/global";
 import { useEffect, useState } from "react";
-import useModal from "../hooks/modal";
 import { styled } from "@linaria/react";
+import useModal from "../hooks/modal";
 
 export default function RestoreSession() {
   // modal controlls and statuses

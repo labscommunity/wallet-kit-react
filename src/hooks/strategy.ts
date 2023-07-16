@@ -1,6 +1,5 @@
-import { getStrategy } from "../strategy";
 import useGlobalState from "./global";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 
 /**
  * Active strategy (wallet) identifier

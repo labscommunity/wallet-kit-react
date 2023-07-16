@@ -1,5 +1,4 @@
 import type { ConnectMsg } from "./connection/connect";
-import { STRATEGY_STORE } from "../strategy";
 import useActiveStrategy from "./strategy";
 import useGlobalState from "./global";
 import { useEffect } from "react";

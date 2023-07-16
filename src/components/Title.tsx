@@ -1,6 +1,6 @@
+import { rgbToString } from "@arweave-wallet-kit/core/theme";
 import { DefaultTheme, withTheme } from "../theme";
 import { styled } from "@linaria/react";
-import { rgbToString } from "../utils";
 
 export const Title = withTheme(styled.h1<{
   small?: boolean;

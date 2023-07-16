@@ -1,11 +1,11 @@
+import { formatAddress } from "@arweave-wallet-kit/core/wallet";
 import { ChevronDownIcon, UserIcon } from "@iconicicons/react";
+import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { DefaultTheme, withTheme } from "../theme";
 import useAddress from "../hooks/active_address";
 import useConnection from "../hooks/connection";
 import useProfileModal from "../hooks/profile";
 import useBalance from "../hooks/balance";
-import { formatAddress } from "../utils";
-import type { Radius } from "./Provider";
 import { styled } from "@linaria/react";
 import type { HTMLProps } from "react";
 import useAns from "../hooks/useAns";

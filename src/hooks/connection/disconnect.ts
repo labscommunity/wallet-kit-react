@@ -1,4 +1,3 @@
-import { STRATEGY_STORE } from "../../strategy";
 import useActiveStrategy from "../strategy";
 import useGlobalState from "../global";
 import useConnected from "./connected";

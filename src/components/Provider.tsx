@@ -1,6 +1,6 @@
-"use client";
-
+import { defaultTheme, rgbToString, ThemeConfig } from "@arweave-wallet-kit/core/theme";
 import { PropsWithChildren, useEffect, useMemo, useReducer } from "react";
+import { Config, defaultConfig } from "@arweave-wallet-kit/core/config";
 import { darkTheme, lightTheme, ThemeProvider } from "../theme";
 import { useSyncPermissions } from "../hooks/permissions";
 import { useSyncAddress } from "../hooks/active_address";
@@ -8,9 +8,7 @@ import RestoreSession from "../modals/RestoreSession";
 import Context, { defaultState } from "../context";
 import { ConnectModal } from "../modals/Connect";
 import { ProfileModal } from "../modals/Profile";
-import type { Config } from "../context/faces";
 import globalReducer from "../context/reducer";
-import { rgbToString } from "../utils";
 import { Helmet } from "react-helmet";
 
 export function ArweaveWalletKit({
@@ -80,42 +78,7 @@ const AddressSync = ({ children }: PropsWithChildren<{}>) => {
   return <>{children}</>;
 };
 
-const defaultTheme: ThemeConfig = {
-  displayTheme: "light",
-  accent: {
-    r: 0,
-    g: 0,
-    b: 0
-  },
-  titleHighlight: {
-    r: 0,
-    g: 122,
-    b: 255
-  },
-  radius: "default"
-};
-
-const defaultConfig: Config = {
-  permissions: ["ACCESS_ADDRESS", "ACCESS_ALL_ADDRESSES"],
-  ensurePermissions: false
-};
-
 interface Props {
   theme?: Partial<ThemeConfig>;
   config?: Config;
 }
-
-export interface ThemeConfig {
-  displayTheme: "dark" | "light";
-  accent: RGBObject;
-  titleHighlight: RGBObject;
-  radius: Radius;
-}
-
-export interface RGBObject {
-  r: number;
-  g: number;
-  b: number;
-}
-
-export type Radius = "default" | "minimal" | "none";

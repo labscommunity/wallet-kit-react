@@ -1,8 +1,9 @@
-import { Radius, withTheme } from "../../theme";
+import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { version } from "../../../package.json";
 import type { PropsWithChildren } from "react";
 import useMobile from "../../hooks/mobile";
 import { styled } from "@linaria/react";
+import { withTheme } from "../../theme";
 import {
   AnimatePresence,
   ForwardRefComponent,
@@ -109,7 +110,7 @@ const Wrapper = withTheme(styled(motion.div as any)<any>`
   width: 28vw;
   background-color: rgb(${(props) => props.theme.background});
   border-radius: ${(props) =>
-    radius[props.theme.themeConfig.radius as Radius] + "px"};
+    radius[props.theme.theme.radius as Radius] + "px"};
   z-index: 100000;
   font-family: "Manrope", sans-serif;
   overflow: hidden;

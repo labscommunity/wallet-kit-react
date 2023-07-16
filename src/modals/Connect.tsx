@@ -1,14 +1,13 @@
 import { AppIcon, Application, Logo } from "../components/Application";
-import strategies, { getStrategy, saveStrategy } from "../strategy";
+import type { Strategy } from "@arweave-wallet-kit/core/strategy";
 import { Title, TitleWithParagraph } from "../components/Title";
+import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronLeftIcon } from "@iconicicons/react";
-import type { Radius } from "../components/Provider";
 import { Paragraph } from "../components/Paragraph";
 import { Footer } from "../components/Modal/Footer";
 import { DefaultTheme, withTheme } from "../theme";
 import { Modal } from "../components/Modal/Modal";
-import type Strategy from "../strategy/Strategy";
 import { Loading } from "../components/Loading";
 import { Head } from "../components/Modal/Head";
 import useConnection from "../hooks/connection";

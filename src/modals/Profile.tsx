@@ -1,5 +1,6 @@
 import { CopyIcon, LogOutIcon, UserIcon } from "@iconicicons/react";
-import type { Radius } from "../components/Provider";
+import { formatAddress } from "@arweave-wallet-kit/core/wallet";
+import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { Paragraph } from "../components/Paragraph";
 import { DefaultTheme, withTheme } from "../theme";
 import useActiveStrategy from "../hooks/strategy";
@@ -11,7 +12,6 @@ import useGlobalState from "../hooks/global";
 import useGatewayURL from "../hooks/gateway";
 import { Title } from "../components/Title";
 import useBalance from "../hooks/balance";
-import { formatAddress } from "../utils";
 import { styled } from "@linaria/react";
 import useModal from "../hooks/modal";
 import useAns from "../hooks/useAns";

@@ -1,4 +1,5 @@
-import type { PermissionType, AppInfo, GatewayConfig } from "arconnect";
+import type { PermissionType } from "@arweave-wallet-kit/core/wallet";
+import type { Config } from "@arweave-wallet-kit/core/config";
 
 /** Basic action */
 export interface Action {
@@ -61,20 +62,4 @@ export interface GlobalState {
   config: Config;
   activeAddress?: string;
   givenPermissions: PermissionType[];
-}
-
-/** Global config for the kit */
-export interface Config {
-  /** The permissions your app requires */
-  permissions: PermissionType[];
-  /**
-   * This will ensure that all required permissions are
-   * given to your app. If not, the kit will not
-   * consider the strategy "connected"
-   */
-  ensurePermissions?: boolean;
-  /** Information about your application */
-  appInfo?: AppInfo;
-  /** Custom Arweave gateway configuration */
-  gatewayConfig?: GatewayConfig;
 }

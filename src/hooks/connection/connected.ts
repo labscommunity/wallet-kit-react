@@ -1,4 +1,4 @@
-import { comparePermissions } from "../../utils";
+import { comparePermissions } from "@arweave-wallet-kit/core/wallet";
 import { useEffect, useState } from "react";
 import useActiveStrategy from "../strategy";
 import usePermissions from "../permissions";

@@ -1,5 +1,5 @@
+import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { DefaultTheme, withTheme } from "../theme";
-import type { Radius } from "./Provider";
 import { styled } from "@linaria/react";
 
 const radius: Record<Radius, number> = {

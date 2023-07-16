@@ -1,4 +1,5 @@
 import { createTheming, ThemingType } from "@callstack/react-theme-provider";
+import { defaultTheme, ThemeConfig } from "@arweave-wallet-kit/core/theme";
 
 export const lightTheme: DisplayTheme = {
   primaryText: "0, 0, 0",
@@ -14,33 +15,11 @@ export const darkTheme: DisplayTheme = {
   light: "44, 45, 49"
 };
 
-const defaultThemeConfig: ThemeConfig = {
-  displayTheme: "light",
-  accent: {
-    r: 0,
-    g: 0,
-    b: 0
-  },
-  titleHighlight: {
-    r: 0,
-    g: 122,
-    b: 255
-  },
-  radius: "default"
-};
-
 export interface DisplayTheme {
   background: string;
   primaryText: string;
   secondaryText: string;
   light: string;
-}
-
-export interface ThemeConfig {
-  displayTheme: "dark" | "light";
-  accent: RGBObject;
-  titleHighlight: RGBObject;
-  radius: Radius;
 }
 
 export interface DefaultTheme extends DisplayTheme {
@@ -49,14 +28,6 @@ export interface DefaultTheme extends DisplayTheme {
   themeConfig: ThemeConfig;
 }
 
-export interface RGBObject {
-  r: number;
-  g: number;
-  b: number;
-}
-
-export type Radius = "default" | "minimal" | "none";
-
 const theming: ThemingType<DefaultTheme> & {
   ThemeProvider: React.ComponentType<
     React.PropsWithChildren<{ theme?: DefaultTheme }>
@@ -64,7 +35,7 @@ const theming: ThemingType<DefaultTheme> & {
 } = createTheming<DefaultTheme>({
   displayTheme: "light",
   theme: "0, 0, 0",
-  themeConfig: defaultThemeConfig,
+  themeConfig: defaultTheme,
   ...lightTheme
 });
 
