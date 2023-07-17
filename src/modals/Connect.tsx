@@ -1,5 +1,5 @@
+import { getStrategy, saveStrategy, Strategy } from "@arweave-wallet-kit/core/strategy";
 import { AppIcon, Application, Logo } from "../components/Application";
-import type { Strategy } from "@arweave-wallet-kit/core/strategy";
 import { Title, TitleWithParagraph } from "../components/Title";
 import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { useEffect, useMemo, useState } from "react";
@@ -46,8 +46,8 @@ export function ConnectModal() {
 
   // selected strategy data
   const strategyData = useMemo(
-    () => (selectedStrategy ? getStrategy(selectedStrategy) : undefined),
-    [selectedStrategy, strategies]
+    () => (selectedStrategy ? getStrategy(selectedStrategy, state.config.strategies) : undefined),
+    [selectedStrategy, state]
   );
 
   // loadings
@@ -63,6 +63,7 @@ export function ConnectModal() {
   // go to connect screen for strategy
   async function goToConnect(strategyID: string) {
     // get strategy
+    const strategies = state.config.strategies;
     const s = strategies.find((s) => s.id === strategyID);
 
     if (!s) return;
@@ -177,7 +178,9 @@ export function ConnectModal() {
       </Head>
       {(!selectedStrategy && (
         <Apps>
-          {strategies.map((strategy, i) => (
+          {state.config.strategies.sort(
+            (a, b) => a.name.localeCompare(b.name)
+          ).map((strategy, i) => (
             <Application
               name={strategy.name}
               description={strategy.description}
@@ -187,6 +190,11 @@ export function ConnectModal() {
               key={i}
             />
           ))}
+          {state.config.strategies.length < 1 && (
+            <NoStrategies>
+              No strategies added yet.
+            </NoStrategies>
+          )}
         </Apps>
       )) || (
         <Connecting>
@@ -223,14 +231,8 @@ export function ConnectModal() {
                     If you don't have it yet, you can try to download it
                   </Paragraph>
                   {
-                    // @ts-expect-error
                     strategyData?.url && (
-                      <Button
-                        onClick={() => {
-                          // @ts-expect-error
-                          window.open(strategyData.url);
-                        }}
-                      >
+                      <Button onClick={() => window.open(strategyData.url)}>
                         Download
                       </Button>
                     )
@@ -265,6 +267,15 @@ const Apps = styled.div`
   max-height: 280px;
   overflow-y: auto;
 `;
+
+const NoStrategies = withTheme(styled.p<{ theme: DefaultTheme }>`
+  font-size: .7rem;
+  text-align: center;
+  color: rgb(${(props) => props.theme.secondaryText});
+  margin: 3.4rem 0;
+  font-weight: 600;
+  transition: color 0.23s ease-in-out;
+`);
 
 const Connecting = styled.div`
   position: relative;

@@ -1,4 +1,4 @@
-import type { Strategy } from "@arweave-wallet-kit/core/strategy";
+import { Strategy, STRATEGY_STORE, syncStrategies } from "@arweave-wallet-kit/core/strategy";
 import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { DefaultTheme, withTheme } from "../theme";
 import { Modal } from "../components/Modal/Modal";
@@ -21,6 +21,7 @@ export default function RestoreSession() {
   useEffect(() => {
     (async () => {
       const activeStrategy = await syncStrategies(
+        state?.config.strategies,
         state?.config.permissions || [],
         !!state?.config.ensurePermissions
       );
@@ -31,7 +32,6 @@ export default function RestoreSession() {
       // because opening popups without user
       // action is disabled by default in the
       // browser
-      // @ts-expect-error
       if (!!activeStrategy && !!activeStrategy.resumeSession) {
         setStrategyToRestore(activeStrategy as Strategy);
         modalController.setOpen(true);

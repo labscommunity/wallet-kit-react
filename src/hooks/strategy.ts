@@ -1,3 +1,4 @@
+import { getStrategy } from "@arweave-wallet-kit/core/strategy";
 import useGlobalState from "./global";
 import { useMemo } from "react";
 
@@ -15,9 +16,12 @@ export function useStrategy() {
 // active strategy instance
 export default function useActiveStrategy() {
   // global context
-  const activeStrategy = useStrategy();
+  const { state } = useGlobalState();
 
-  const strategy = useMemo(() => getStrategy(activeStrategy), [activeStrategy]);
+  const strategy = useMemo(() => getStrategy(
+    state.activeStrategy,
+    state.config.strategies
+  ), [state]);
 
   return strategy;
 }

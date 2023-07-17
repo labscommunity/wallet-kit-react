@@ -1,3 +1,4 @@
+import { STRATEGY_STORE } from "@arweave-wallet-kit/core/strategy";
 import type { ConnectMsg } from "./connection/connect";
 import useActiveStrategy from "./strategy";
 import useGlobalState from "./global";

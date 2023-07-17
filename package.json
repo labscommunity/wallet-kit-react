@@ -34,7 +34,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@arweave-wallet-kit/core": "^0.0.1-beta.1",
+    "@arweave-wallet-kit/core": "^0.0.1-beta.2",
     "@babel/core": "^7.20.12",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -57,7 +57,7 @@
     "vite-plugin-dts": "^1.7.1"
   },
   "peerDependencies": {
-    "@arweave-wallet-kit/core": ">= 0.0.1-beta.1 < 2",
+    "@arweave-wallet-kit/core": ">= 0.0.1-beta.2 < 2",
     "arweave": ">= 1.14.0 < 2",
     "react": "^16.8.0 || 17.x || 18.x",
     "react-dom": "^16.8.0 || 17.x || 18.x"
