@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Arweave from "arweave/node/common";
+//import Arweave from "arweave/node/common";
 import useGlobalState from "./global";
 
 /**
@@ -11,7 +11,7 @@ export default function useBalance() {
 
   useEffect(() => {
     (async () => {
-      if (!state.activeAddress) return;
+      /*if (!state.activeAddress) return;
 
       const arweave = new Arweave(
         state?.config?.gatewayConfig || {
@@ -25,7 +25,7 @@ export default function useBalance() {
         await arweave.wallets.getBalance(state.activeAddress)
       );
 
-      setBalance(Number(bal));
+      setBalance(Number(bal));*/
     })();
   }, [state?.activeAddress]);
 

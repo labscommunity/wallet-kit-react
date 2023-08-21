@@ -173,7 +173,7 @@ const Buttons = styled.div`
   @media screen and (max-width: 720px) {
     flex-direction: column;
 
-    ${Button} {
+    button {
       width: 100%;
     }
   }
