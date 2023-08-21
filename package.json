@@ -44,7 +44,7 @@
     "@types/react-dom": "^18.0.10",
     "@types/react-helmet": "^6.1.6",
     "@vitejs/plugin-react": "^3.0.0",
-    "arweave": "^1.14.0",
+    "arweave": "^1.12.2",
     "babel-loader": "^8.3.0",
     "prettier": "^2.8.2",
     "react": "^18.2.0",
@@ -58,7 +58,7 @@
   },
   "peerDependencies": {
     "@arweave-wallet-kit/core": ">= 0.0.1-beta.2 < 2",
-    "arweave": ">= 1.14.0 < 2",
+    "arweave": ">= 1.12.2 < 2",
     "react": "^16.8.0 || 17.x || 18.x",
     "react-dom": "^16.8.0 || 17.x || 18.x"
   }
