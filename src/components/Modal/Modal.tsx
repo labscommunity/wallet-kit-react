@@ -110,7 +110,7 @@ const Wrapper = withTheme(styled(motion.div as any)<any>`
   width: 28vw;
   background-color: rgb(${(props) => props.theme.background});
   border-radius: ${(props) =>
-    radius[props.theme.theme.radius as Radius] + "px"};
+    radius[props.theme.themeConfig.radius as Radius] + "px"};
   z-index: 100000;
   font-family: "Manrope", sans-serif;
   overflow: hidden;
