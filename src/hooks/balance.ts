@@ -27,7 +27,7 @@ export default function useBalance() {
 
       setBalance(Number(bal));
     })();
-  }, [state?.activeAddress]);
+  }, [state?.activeAddress, state?.config?.gatewayConfig]);
 
   return balance;
 }
