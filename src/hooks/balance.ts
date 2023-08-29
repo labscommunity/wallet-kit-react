@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Arweave from "arweave/node/common";
 import useGlobalState from "./global";
+import Arweave from "arweave";
 
 /**
  * Balance hook
