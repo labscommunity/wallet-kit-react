@@ -1,6 +1,6 @@
+import { PropsWithChildren, useCallback, useState } from "react";
 import type { Radius } from "@arweave-wallet-kit/core/theme";
 import { version } from "../../../package.json";
-import type { PropsWithChildren } from "react";
 import useMobile from "../../hooks/mobile";
 import { styled } from "@linaria/react";
 import { withTheme } from "../../theme";
@@ -22,6 +22,20 @@ export function Modal({
   noWatermark = false
 }: PropsWithChildren<Props>) {
   const mobile = useMobile();
+
+  // animate content sice
+  const [contentSize, setContentSize] = useState<number>(0);
+
+  const contentRef = useCallback<(el: HTMLDivElement) => void>((el) => {
+    if (!el) return;
+
+    const obs = new ResizeObserver(() => {
+      if (!el || el.clientHeight <= 0) return;
+      setContentSize(el.clientHeight);
+    });
+
+    obs.observe(el);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -49,8 +63,11 @@ export function Modal({
           initial="hidden"
           animate="shown"
           exit="hidden"
+          style={{ height: contentSize }}
         >
-          {children}
+          <div ref={contentRef}>
+            {children}
+          </div>
         </Wrapper>
       )}
     </AnimatePresence>
@@ -114,7 +131,7 @@ const Wrapper = withTheme(styled(motion.div as any)<any>`
   z-index: 100000;
   font-family: "Manrope", sans-serif;
   overflow: hidden;
-  transition: background-color 0.23s ease-in-out;
+  transition: background-color 0.23s ease-in-out, height 0.17s ease;
 
   *::selection {
     background-color: rgba(0, 0, 0, 0.75);
