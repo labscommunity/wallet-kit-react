@@ -192,7 +192,10 @@ export function ConnectModal() {
           ))}
           {state.config.strategies.length < 1 && (
             <NoStrategies>
-              No strategies added yet.
+              No strategies added yet. You can add one like this:
+              <AddStrategyCode>
+                npm i @arweave-wallet-kit/arconnect-strategy
+              </AddStrategyCode>
             </NoStrategies>
           )}
         </Apps>
@@ -269,7 +272,7 @@ const Apps = styled.div`
 `;
 
 const NoStrategies = withTheme(styled.p<{ theme: DefaultTheme }>`
-  font-size: .7rem;
+  font-size: .94rem;
   text-align: center;
   color: rgb(${(props) => props.theme.secondaryText});
   margin: 3.4rem 0;
@@ -353,3 +356,14 @@ const BackButton = styled(ChevronLeftIcon)`
     transform: scale(1.5);
   }
 `;
+
+const AddStrategyCode = withTheme(styled.div<{ theme: DefaultTheme }>`
+  margin: 1rem;
+  padding: .8rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgb(${(props) => props.theme.light});
+  color: rgb(${props => props.theme.secondaryText});
+  font-size: .95rem;
+  font-family: monospace;
+  font-weight: 500;
+`);
