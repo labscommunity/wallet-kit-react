@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@arweave-wallet-kit/core": "^0.0.1-beta.2",
+    "@arweave-wallet-kit/styles": "^0.0.1-beta.3",
     "@babel/core": "^7.20.12",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -58,6 +59,7 @@
   },
   "peerDependencies": {
     "@arweave-wallet-kit/core": ">= 0.0.1-beta.2 < 2",
+    "@arweave-wallet-kit/styles": ">= 0.0.1-beta.1 < 2",
     "arweave": ">= 1.12.2 < 2",
     "react": "^16.8.0 || 17.x || 18.x",
     "react-dom": "^16.8.0 || 17.x || 18.x"

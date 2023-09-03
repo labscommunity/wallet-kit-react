@@ -53,3 +53,5 @@ export const { ThemeProvider, useTheme } = theming;
 // <ArweaveWalletKit> component anyway
 export const withTheme =
   theming.withTheme || ((val) => val as ThemingType<DefaultTheme>["withTheme"]);
+
+export const unifyClassNames = (...classNames: string[]) => classNames.filter((val) => !!val && val !== "").join(" ");

@@ -1,6 +1,8 @@
+import styles from "@arweave-wallet-kit/styles/text/title.module.css";
+import { DefaultTheme, unifyClassNames, withTheme } from "../theme";
 import { rgbToString } from "@arweave-wallet-kit/core/theme";
-import { DefaultTheme, withTheme } from "../theme";
 import { styled } from "@linaria/react";
+import type { HTMLProps } from "react";
 
 export const Title = withTheme(styled.h1<{
   small?: boolean;
@@ -27,8 +29,11 @@ export const Title = withTheme(styled.h1<{
   transition: color 0.23s ease-in-out;
 `);
 
-export const TitleWithParagraph = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-`;
+export const TitleWithParagraph = ({ children, className, ...props }: HTMLProps<HTMLDivElement>) => (
+  <div
+    className={unifyClassNames(styles.withParagraph, className || "")}
+    {...props}
+  >
+    {children}
+  </div>
+);
