@@ -19,7 +19,8 @@ export function Modal({
   children,
   className,
   variants,
-  noWatermark = false
+  noWatermark = false,
+  noVariableContentSize = false
 }: PropsWithChildren<Props>) {
   const mobile = useMobile();
 
@@ -63,7 +64,7 @@ export function Modal({
           initial="hidden"
           animate="shown"
           exit="hidden"
-          style={{ height: contentSize }}
+          style={{ height: !noVariableContentSize ? contentSize : undefined }}
         >
           <div ref={contentRef}>
             {children}
@@ -181,4 +182,5 @@ interface Props extends MotionProps {
   onClose: () => void;
   className?: string;
   noWatermark?: boolean;
+  noVariableContentSize?: boolean;
 }

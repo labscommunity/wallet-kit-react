@@ -98,15 +98,18 @@ export default function RestoreSession() {
       {...modalController.bindings}
       onClose={cancel}
       noWatermark
+      noVariableContentSize
     >
-      <Text>
-        Would you like to restore your {strategyToRestore?.name + " " || ""}
-        session?
-      </Text>
-      <Buttons>
-        <Button onClick={restore}>Restore</Button>
-        <CloseButton onClick={cancel}>Cancel</CloseButton>
-      </Buttons>
+      <Content>
+        <Text>
+          Would you like to restore your {strategyToRestore?.name + " " || ""}
+          session?
+        </Text>
+        <Buttons>
+          <Button onClick={restore}>Restore</Button>
+          <CloseButton onClick={cancel}>Cancel</CloseButton>
+        </Buttons>
+      </Content>
     </BottomModal>
   );
 }
@@ -157,6 +160,12 @@ const BottomModal = withTheme(styled(Modal as any)<any>`
     gap: 1rem;
   }
 `) as typeof Modal;
+
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.24rem;
+`;
 
 const Text = withTheme(styled.p<{ theme: DefaultTheme }>`
   font-size: 1.05rem;
