@@ -1,13 +1,16 @@
-import { DefaultTheme, withTheme } from "../theme";
-import { styled } from "@linaria/react";
+import styles from "@arweave-wallet-kit/styles/text/paragraph.module.css";
+import type { HTMLProps } from "react";
+import { cx } from "@linaria/core";
 
-export const Paragraph = withTheme(styled.p<{
+export const Paragraph = ({ children, className, small, ...props }: HTMLProps<HTMLParagraphElement> & Props) => (
+  <p
+    className={cx(styles.paragraph, small && styles.small, className)}
+    {...props}
+  >
+    {children}
+  </p>
+);
+
+interface Props {
   small?: boolean;
-  theme: DefaultTheme;
-}>`
-  font-size: ${(props) => (props.small ? ".7rem" : ".9rem")};
-  color: rgb(${(props) => props.theme.secondaryText});
-  margin: 0;
-  font-weight: 600;
-  transition: color 0.23s ease-in-out;
-`);
+}

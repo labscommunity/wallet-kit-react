@@ -1,8 +1,10 @@
-import { styled } from "@linaria/react";
+import styles from "@arweave-wallet-kit/styles/loading.module.css";
 import type { HTMLProps } from "react";
+import { cx } from "@linaria/core";
 
-export const Loading = (props: HTMLProps<SVGElement>) => (
-  <SvgWrapper
+export const Loading = ({ className, ...props }: HTMLProps<SVGElement>) => (
+  <svg
+    className={cx(styles.loading, className)}
     viewBox="0 0 48 48"
     xmlns="http://www.w3.org/2000/svg"
     {...(props as any)}
@@ -27,22 +29,5 @@ export const Loading = (props: HTMLProps<SVGElement>) => (
       stroke="currentColor"
       strokeWidth="4"
     ></circle>
-  </SvgWrapper>
+  </svg>
 );
-
-const SvgWrapper = styled.svg`
-  color: currentColor;
-  font-size: 1em;
-  width: 1em;
-  height: 1em;
-  animation: rotate 0.9s linear infinite;
-
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-`;
