@@ -1,7 +1,7 @@
 {
   "name": "@arweave-wallet-kit/react",
   "private": false,
-  "version": "0.0.1-beta.1",
+  "version": "0.0.1-beta.2",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -34,9 +34,8 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@arweave-wallet-kit/core": "^0.0.1-beta.2",
+    "@arweave-wallet-kit/core": "^0.0.1-beta.5",
     "@arweave-wallet-kit/styles": "^0.0.1-beta.3",
-    "@babel/core": "^7.20.12",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
     "@linaria/vite": "^4.2.11",

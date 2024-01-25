@@ -12,7 +12,7 @@ import useGlobalState from "../hooks/global";
 import useGatewayURL from "../hooks/gateway";
 import { Title } from "../components/Title";
 import useBalance from "../hooks/balance";
-import { styled } from "@linaria/react";
+import { StyledMeta, styled } from "@linaria/react";
 import useModal from "../hooks/modal";
 import useAns from "../hooks/useAns";
 import { useEffect } from "react";
@@ -99,7 +99,7 @@ const ProfileData = withTheme(styled.div<{ theme: DefaultTheme }>`
   align-items: center;
   padding: 0 20px 20px;
 
-  ${Title}, ${Paragraph} {
+  ${Title as StyledMeta & typeof Title}, ${Paragraph as StyledMeta & typeof Paragraph} {
     text-align: center;
 
     svg {

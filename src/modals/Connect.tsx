@@ -14,7 +14,7 @@ import useConnection from "../hooks/connection";
 import { Button } from "../components/Button";
 import useGlobalState from "../hooks/global";
 import useGatewayURL from "../hooks/gateway";
-import { styled } from "@linaria/react";
+import { styled, StyledMeta } from "@linaria/react";
 import useModal from "../hooks/modal";
 
 export function ConnectModal() {
@@ -299,14 +299,14 @@ const WalletData = styled.div`
     margin-bottom: 0.65rem;
   }
 
-  ${Title} {
+  ${Title as StyledMeta & typeof Title} {
     text-align: center;
     font-weight: 700;
     margin-bottom: 0.1rem;
     justify-content: center;
   }
 
-  ${Paragraph} {
+  ${Paragraph as StyledMeta & typeof Paragraph} {
     text-align: center;
   }
 

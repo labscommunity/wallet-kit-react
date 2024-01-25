@@ -8,14 +8,14 @@ import path from "node:path";
 
 export default defineConfig({
   plugins: [
-    react(),
-    dts({ insertTypesEntry: true }),
     linaria({
       include: ["**/*.{ts,tsx}"],
       babelOptions: {
         presets: ["@babel/preset-typescript", "@babel/preset-react"]
       }
     }),
+    react(),
+    dts({ insertTypesEntry: true }),
     cssInjectedByJsPlugin(),
     banner({
       content: '"use client";',
@@ -30,11 +30,7 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
-      external: [
-        "react",
-        "react-dom",
-        /^@arweave-wallet-kit\/styles\/.*/
-      ],
+      external: ["react", "react-dom", /^@arweave-wallet-kit\/styles\/.*/],
       output: {
         globals: {
           react: "React",
