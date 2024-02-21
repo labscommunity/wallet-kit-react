@@ -1,4 +1,8 @@
-import { getStrategy, saveStrategy, Strategy } from "@arweave-wallet-kit/core/strategy";
+import {
+  getStrategy,
+  saveStrategy,
+  Strategy
+} from "@arweave-wallet-kit/core/strategy";
 import { AppIcon, Application, Logo } from "../components/Application";
 import { Title, TitleWithParagraph } from "../components/Title";
 import type { Radius } from "@arweave-wallet-kit/core/theme";
@@ -14,7 +18,7 @@ import useConnection from "../hooks/connection";
 import { Button } from "../components/Button";
 import useGlobalState from "../hooks/global";
 import useGatewayURL from "../hooks/gateway";
-import { styled, StyledMeta } from "@linaria/react";
+import { styled } from "@linaria/react";
 import useModal from "../hooks/modal";
 
 export function ConnectModal() {
@@ -46,7 +50,10 @@ export function ConnectModal() {
 
   // selected strategy data
   const strategyData = useMemo(
-    () => (selectedStrategy ? getStrategy(selectedStrategy, state.config.strategies) : undefined),
+    () =>
+      selectedStrategy
+        ? getStrategy(selectedStrategy, state.config.strategies)
+        : undefined,
     [selectedStrategy, state]
   );
 
@@ -156,7 +163,7 @@ export function ConnectModal() {
   useEffect(() => {
     (async () => {
       // @ts-expect-error
-      const brave: boolean = navigator.brave && await navigator.brave.isBrave();
+      const brave: boolean = navigator.brave && (await navigator.brave.isBrave());
 
       setIsBrave(brave);
     })();
@@ -165,7 +172,7 @@ export function ConnectModal() {
   return (
     <Modal {...modalController.bindings} onClose={onClose}>
       <Head onClose={onClose}>
-        <Title
+        <StyledTitle
           themed={!!selectedStrategy}
           onClick={() => {
             if (!selectedStrategy) return;
@@ -174,22 +181,22 @@ export function ConnectModal() {
         >
           {selectedStrategy && <BackButton />}
           {strategyData ? strategyData.name : "Connect wallet"}
-        </Title>
+        </StyledTitle>
       </Head>
       {(!selectedStrategy && (
         <Apps>
-          {state.config.strategies.sort(
-            (a, b) => a.name.localeCompare(b.name)
-          ).map((strategy, i) => (
-            <Application
-              name={strategy.name}
-              description={strategy.description}
-              logo={`${gateway}/${strategy.logo}`}
-              theme={strategy.theme}
-              onClick={() => goToConnect(strategy.id)}
-              key={i}
-            />
-          ))}
+          {state.config.strategies
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((strategy, i) => (
+              <Application
+                name={strategy.name}
+                description={strategy.description}
+                logo={`${gateway}/${strategy.logo}`}
+                theme={strategy.theme}
+                onClick={() => goToConnect(strategy.id)}
+                key={i}
+              />
+            ))}
           {state.config.strategies.length < 1 && (
             <NoStrategies>
               No strategies added yet. You can add one like this:
@@ -203,17 +210,23 @@ export function ConnectModal() {
         <Connecting>
           <WalletData>
             <AppIcon colorTheme={strategyData?.theme}>
-              <Logo src={`${gateway}/${strategyData?.logo}`} draggable={false} />
+              <Logo
+                src={`${gateway}/${strategyData?.logo}`}
+                draggable={false}
+              />
             </AppIcon>
             {(strategyAvailable && (
               <>
-                <Title small>Connecting to {strategyData?.name || ""}...</Title>
-                <Paragraph>
+                <StyledTitle small>
+                  Connecting to {strategyData?.name || ""}...
+                </StyledTitle>
+                <StyledParagraph>
                   Confirm connection request in the wallet popup window
-                </Paragraph>
+                </StyledParagraph>
                 {strategyData?.id === "othent" && isBrave && (
                   <BraveParagraph>
-                    You might need to <b>disable Brave shields</b> for this to work properly.
+                    You might need to <b>disable Brave shields</b> for this to
+                    work properly.
                   </BraveParagraph>
                 )}
                 {retry && strategyData && (
@@ -227,19 +240,17 @@ export function ConnectModal() {
             )) ||
               (!loadingAvailability && (
                 <>
-                  <Title small>
+                  <StyledTitle small>
                     {strategyData?.name || ""} is not available.
-                  </Title>
-                  <Paragraph>
+                  </StyledTitle>
+                  <StyledParagraph>
                     If you don't have it yet, you can try to download it
-                  </Paragraph>
-                  {
-                    strategyData?.url && (
-                      <Button onClick={() => window.open(strategyData.url)}>
-                        Download
-                      </Button>
-                    )
-                  }
+                  </StyledParagraph>
+                  {strategyData?.url && (
+                    <Button onClick={() => window.open(strategyData.url)}>
+                      Download
+                    </Button>
+                  )}
                 </>
               ))}
             {(connecting || loadingAvailability) && <ConnectLoading />}
@@ -248,10 +259,10 @@ export function ConnectModal() {
       )}
       <Footer>
         <TitleWithParagraph>
-          <Title small>Don't have a wallet?</Title>
-          <Paragraph small>
+          <StyledTitle small>Don't have a wallet?</StyledTitle>
+          <StyledParagraph small>
             Click to learn more about the permaweb & wallets.
-          </Paragraph>
+          </StyledParagraph>
         </TitleWithParagraph>
         <Button onClick={() => window.open("https://arwiki.wiki/#/en/wallets")}>
           Get
@@ -260,6 +271,9 @@ export function ConnectModal() {
     </Modal>
   );
 }
+
+const StyledTitle = styled(Title)``;
+const StyledParagraph = styled(Paragraph)``;
 
 const Apps = styled.div`
   position: relative;
@@ -272,7 +286,7 @@ const Apps = styled.div`
 `;
 
 const NoStrategies = withTheme(styled.p<{ theme: DefaultTheme }>`
-  font-size: .94rem;
+  font-size: 0.94rem;
   text-align: center;
   color: rgb(${(props) => props.theme.secondaryText});
   margin: 3.4rem 0;
@@ -299,14 +313,14 @@ const WalletData = styled.div`
     margin-bottom: 0.65rem;
   }
 
-  ${Title as StyledMeta & typeof Title} {
+  ${StyledTitle} {
     text-align: center;
     font-weight: 700;
     margin-bottom: 0.1rem;
     justify-content: center;
   }
 
-  ${Paragraph as StyledMeta & typeof Paragraph} {
+  ${StyledParagraph} {
     text-align: center;
   }
 
@@ -324,9 +338,9 @@ const radius: Record<Radius, number> = {
 const BraveParagraph = withTheme(styled(Paragraph)<{ theme: DefaultTheme }>`
   background-color: rgba(251, 85, 43, 0.2);
   color: #fb542b;
-  padding: .44rem;
-  border-radius: ${props => radius[props.theme.themeConfig.radius] + "px"};
-  margin-top: .6rem;
+  padding: 0.44rem;
+  border-radius: ${(props) => radius[props.theme.themeConfig.radius] + "px"};
+  margin-top: 0.6rem;
 `);
 
 const ConnectLoading = withTheme(styled(Loading)<{ theme: DefaultTheme }>`
@@ -359,11 +373,11 @@ const BackButton = styled(ChevronLeftIcon)`
 
 const AddStrategyCode = withTheme(styled.div<{ theme: DefaultTheme }>`
   margin: 1rem;
-  padding: .8rem 1rem;
+  padding: 0.8rem 1rem;
   border-radius: 12px;
   border: 1px solid rgb(${(props) => props.theme.light});
-  color: rgb(${props => props.theme.secondaryText});
-  font-size: .95rem;
+  color: rgb(${(props) => props.theme.secondaryText});
+  font-size: 0.95rem;
   font-family: monospace;
   font-weight: 500;
 `);

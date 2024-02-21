@@ -12,7 +12,7 @@ import useGlobalState from "../hooks/global";
 import useGatewayURL from "../hooks/gateway";
 import { Title } from "../components/Title";
 import useBalance from "../hooks/balance";
-import { StyledMeta, styled } from "@linaria/react";
+import { styled } from "@linaria/react";
 import useModal from "../hooks/modal";
 import useAns from "../hooks/useAns";
 import { useEffect } from "react";
@@ -53,7 +53,7 @@ export function ProfileModal() {
   return (
     <Modal {...modalController.bindings} onClose={onClose}>
       <Head onClose={onClose}>
-        <Title>Profile</Title>
+        <StyledTitle>Profile</StyledTitle>
       </Head>
       <ProfileData>
         <ProfilePicture profilePicture={ans?.avatar}>
@@ -66,18 +66,18 @@ export function ProfileModal() {
             />
           </ActiveStrategy>
         </ProfilePicture>
-        <Title>
+        <StyledTitle>
           {ans?.currentLabel || formatAddress(state?.activeAddress || "", 8)}
           <CopyIcon
             onClick={() =>
               navigator.clipboard.writeText(state.activeAddress || "")
             }
           />
-        </Title>
-        <Paragraph>
+        </StyledTitle>
+        <StyledParagraph>
           {balance.toLocaleString(undefined, { maximumFractionDigits: 4 })}
           {" AR"}
-        </Paragraph>
+        </StyledParagraph>
         <Button onClick={disconnect}>
           <LogOutIcon />
           Disconnect
@@ -92,6 +92,8 @@ const btnRadius: Record<Radius, number> = {
   minimal: 10,
   none: 0
 };
+const StyledTitle = styled(Title)``;
+const StyledParagraph = styled(Paragraph)``;
 
 const ProfileData = withTheme(styled.div<{ theme: DefaultTheme }>`
   display: flex;
@@ -99,7 +101,7 @@ const ProfileData = withTheme(styled.div<{ theme: DefaultTheme }>`
   align-items: center;
   padding: 0 20px 20px;
 
-  ${Title as StyledMeta & typeof Title}, ${Paragraph as StyledMeta & typeof Paragraph} {
+  ${StyledTitle}, ${StyledParagraph} {
     text-align: center;
 
     svg {
