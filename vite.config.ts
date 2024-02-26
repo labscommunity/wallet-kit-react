@@ -3,12 +3,13 @@ import react from "@vitejs/plugin-react";
 import banner from "vite-plugin-banner";
 import { defineConfig } from "vite";
 import linaria from "@linaria/vite";
+import wyw from "@wyw-in-js/vite";
 import dts from "vite-plugin-dts";
 import path from "node:path";
 
 export default defineConfig({
   plugins: [
-    linaria({
+    wyw({
       include: ["**/*.{ts,tsx}"],
       babelOptions: {
         presets: ["@babel/preset-typescript", "@babel/preset-react"]

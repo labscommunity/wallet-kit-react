@@ -1,4 +1,4 @@
-import styles from "@arweave-wallet-kit/styles/text/title.module.css";
+import styles from "@arweave-wallet-kit/styles/dist/text/title.module.css";
 import type { HTMLProps } from "react";
 import { cx } from "@linaria/core";
 

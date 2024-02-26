@@ -1,4 +1,4 @@
-import styles from "@arweave-wallet-kit/styles/text/paragraph.module.css";
+import styles from "@arweave-wallet-kit/styles/dist/text/paragraph.module.css";
 import type { HTMLProps } from "react";
 import { cx } from "@linaria/core";
 
